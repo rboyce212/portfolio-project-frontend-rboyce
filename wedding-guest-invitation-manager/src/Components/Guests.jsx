@@ -40,22 +40,23 @@ export default function Guests() {
           </tr>
         </thead>
         <tbody>
-          {guests.map((item) => {
-            <tr key={item.id} className="list">
-              <td>
-                <Link to={`/guests/${item.id}`}>{item.name_last}</Link>
-              </td>
-              <td>{item.name_first}</td>
-              <td>{item.street_address_one}</td>
-              <td>{item.street_address_two}</td>
-              <td>{item.city_state_zip}</td>
-              <td>{item.address_is_confirmed}</td>
-              <td>{item.invite_is_mailed}</td>
-              <td>{item.rsvp_is_received}</td>
-              <td>{item.is_attending}</td>
-              <td>{item.party_total}</td>
-            </tr>;
-          })}
+          {guests &&
+            guests.map((item) => (
+              <tr key={item.id} className="list">
+                <td>
+                  <Link to={`/guests/${item.id}`}>{item.name_last}</Link>
+                </td>
+                <td>{item.name_first}</td>
+                <td>{item.street_address_one}</td>
+                <td>{item.street_address_two}</td>
+                <td>{item.city_state_zip}</td>
+                <td>{item.address_is_confirmed}</td>
+                <td>{item.invite_is_mailed}</td>
+                <td>{item.rsvp_is_received}</td>
+                <td>{item.is_attending}</td>
+                <td>{item.party_total}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
