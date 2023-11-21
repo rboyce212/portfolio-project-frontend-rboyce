@@ -1,9 +1,7 @@
-import App from "../App";
-
 export default function Home() {
   return (
     <div className="Home">
-      <App />
+      <h2>Welcome to the Wedding Guest Invitation Manager</h2>
     </div>
   );
 }
