@@ -9,13 +9,11 @@ export default function Guests() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        fetch(`${API}/guests`)
-          .then((res) => res.json())
-          .then((res) => {
-            setGuests(res);
-          });
+        const response = await fetch(`${API}/guests`);
+        const data = await response.json();
+        setGuests(data);
       } catch (error) {
-        return error;
+        console.error(error);
       }
     };
     fetchData();
@@ -40,7 +38,7 @@ export default function Guests() {
           </tr>
         </thead>
         <tbody>
-          {guests &&
+          {Array.isArray(guests) &&
             guests.map((item) => (
               <tr key={item.id} className="list">
                 <td>
