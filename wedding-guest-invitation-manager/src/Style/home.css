@@ -1,0 +1,23 @@
+h2 {
+  color: blue;
+  font-family: cursive;
+}
+
+h3 {
+  color: rgb(20, 20, 21);
+  font-family: cursive;
+}
+
+.home {
+  font-family: cursive;
+  color: black;
+}
+
+.navbar {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-shadow: 10px;
+  font: bolder;
+  font-weight: 600;
+  text-decoration: solid;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}

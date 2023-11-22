@@ -51,6 +51,7 @@ button {
   transition: border-color 0.25s;
   margin-left: 5px;
   margin-right: 5px;
+  margin-top: 20px;
 }
 button:hover {
   border-color: #646cff;
@@ -101,4 +102,37 @@ header {
 .skinny-col th {
   font-size: xx-small;
   background-color: #b0d2e2;
+}
+
+header {
+  margin-bottom: 150px;
+}
+
+.app {
+  padding-top: 0;
+}
+
+input {
+  margin-left: 5px;
+  margin-right: 15px;
+}
+
+form {
+  text-align: left;
+}
+
+label {
+  font-weight: bolder;
+}
+
+.btn-primary {
+  justify-items: center;
+}
+
+#newguest {
+  margin-top: 20px;
+  align-self: flex-start;
+}
+
+#backtoall {
 }

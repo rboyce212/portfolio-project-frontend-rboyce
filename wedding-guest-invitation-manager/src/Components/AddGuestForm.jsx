@@ -97,6 +97,8 @@ export default function AddGuestForm() {
           placeholder="first name"
           required
         />
+        <br />
+        <br />
         <label htmlFor="addOne">Street Address: </label>
         <input
           id="addOne"
@@ -114,6 +116,8 @@ export default function AddGuestForm() {
           onChange={handleTextChange}
           placeholder="street continued"
         />
+        <br />
+        <br />
         <label htmlFor="cityZip">City, State Zipcode: </label>
         <input
           id="cityZip"
@@ -123,6 +127,8 @@ export default function AddGuestForm() {
           placeholder="city, ST zip"
           required
         />
+        <br />
+        <br />
         <label htmlFor="addConfirm">Address is Confirmed: </label>
         <input
           id="addConfirm"
@@ -130,6 +136,7 @@ export default function AddGuestForm() {
           onChange={handleAddConfirmChange}
           checked={guest.addConfirm}
         />
+        <br />
         <label htmlFor="isMailed">Invite is Mailed: </label>
         <input
           id="isMailed"
@@ -137,6 +144,7 @@ export default function AddGuestForm() {
           onChange={handleIsMailedChange}
           checked={guest.isMailed}
         />
+        <br />
         <label htmlFor="rsvp">RSVP is Received: </label>
         <input
           id="rsvp"
@@ -144,6 +152,7 @@ export default function AddGuestForm() {
           onChange={handleRsvpChange}
           checked={guest.rsvp}
         />
+        <br />
         <label htmlFor="attending">Guest is Attending: </label>
         <input
           id="attending"
@@ -151,6 +160,8 @@ export default function AddGuestForm() {
           onChange={handleAttendingChange}
           checked={guest.attending}
         />
+        <br />
+        <br />
         <label htmlFor="party">Number of Guests Attending: </label>
         <input
           id="party"
@@ -163,12 +174,12 @@ export default function AddGuestForm() {
           placeholder="number in party"
         />
         <br />
-        <br />
-        <button type="submit">Add New Guest</button>
+        <button id="newguest" className="btn btn-primary" type="submit">
+          Add New Guest
+        </button>
       </form>
-      <br />
       <Link to={`/guests`}>
-        <button>Back to All Guests</button>
+        <button className="btn btn-primary">Back to All Guests</button>
       </Link>
     </div>
   );
