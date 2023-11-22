@@ -8,7 +8,7 @@ export default function NavBar() {
           <Link to="/">Wedding Guest Invitation Manager</Link>
         </h2>
         <button type="button" className="btn btn-primary">
-          <Link to="/guests/new">Add New Guest</Link>
+          <Link to="/guests/add">Add New Guest</Link>
         </button>
         <button type="button" className="btn btn-primary">
           <Link to="/guests">View All Guests</Link>
