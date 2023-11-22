@@ -1,74 +1,72 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+
 const API = import.meta.env.VITE_BASE_URL;
 
 export default function GuestDetails() {
-  const [guest, setGuest] = useState({ name_last: "" });
+  const [guest, setGuest] = useState("");
   let navigate = useNavigate();
-  let { index } = useParams();
+  let { id } = useParams();
 
   useEffect(() => {
-    const fetchGuest = async () => {
+    const fetchGuestById = async () => {
       try {
-        fetch(`${API}/guests/${index}`)
-          .then((res) => res.json())
-          .then((res) => {
-            setGuest(res);
-          });
+        const response = await fetch(`${API}/guests/${id}`);
+        const data = await response.json();
+        setGuest(data);
       } catch (error) {
-        return error;
+        console.error(error);
       }
     };
-    fetchGuest();
-  }, [index]);
+    fetchGuestById();
+  }, [id]);
 
   const handleDelete = () => {
-    fetch(`${API}/guests/${index}`, { method: "DELETE" }).then(() =>
-      navigate(`/guests`)
-    );
+    fetch(`${API}/guests/${id}`, { method: "DELETE" })
+      .then(() => navigate(`/guests`))
+      .catch((error) => console.error(error));
   };
 
   return (
-    <div>
-      <div>
-        {guest ? (
+    <div className="container">
+      {guest ? (
+        <>
+          <h2>
+            {guest.name_first} {guest.name_last}
+          </h2>
           <div>
-            <>
-              <h3>
-                {guest.name_first} {guest.name_last}
-              </h3>
-              <h4>Address: {guest.street_address_one}</h4>
-              <h4>(cont.): {guest.street_address_two}</h4>
-              <h4>(cont.): {guest.city_state_zip}</h4>
-              <h5>Address Confirmed = {guest.address_is_confirmed}</h5>
-              <h5>Invitation Mailed = {guest.invite_is_mailed}</h5>
-              <h5>RSVP Received = {guest.rsvp_is_received}</h5>
-              <h5>Will Be Attending = {guest.is_attending}</h5>
-              <h5>Total Number of Guests: {guest.party_total}</h5>
-              <div>
-                <Link to={`/guests/${index}/edit`}>Edit Guest Info</Link>
-                <button
-                  onClick={handleDelete}
-                  type="button"
-                  className="btn btn-primary"
-                >
-                  Delete Guest!
-                </button>
-              </div>
-            </>
+            <p>Street Address: {guest.street_address_one}</p>
+            <p>Street (cont.): {guest.street_address_two}</p>
+            <p>City, ST Zip: {guest.city_state_zip}</p>
+            <p>Address Confirmed: {guest.address_is_confirmed}</p>
+            <p>Invite Mailed:{guest.invite_is_mailed}</p>
+            <p>RSVP Received: {guest.rsvp_is_received}</p>
+            <p>Is Attending: {guest.is_attending}</p>
+            <p>Confirmed Total: {guest.party_total}</p>
           </div>
-        ) : (
-          <>
-            <div className="alert alert-warning" role="alert">
-              No Guest Info Available
-            </div>
-            <br />
+          <Link to={`/guests/${id}/edit`} className="btn btn-primary">
+            Edit Guest Info
+          </Link>
+          <br />
+          <button onClick={handleDelete} className="btn btn-danger">
+            Delete Guest
+          </button>
+          <br />
+          <br />
+          <div>
+            <Link to="/guests">Back to All Guests</Link>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="alert alert-warning">
             <div>
-              <Link to="/guests">Select another guest</Link>
+              There is no more guest info available!
+              <Link to="/guests">Please Select Another Guest</Link>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -35,6 +35,10 @@ h1 {
   line-height: 1.1;
 }
 
+td {
+  font-size: xx-small;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -45,6 +49,8 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 button:hover {
   border-color: #646cff;
@@ -65,4 +71,34 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+body {
+  background-image: url(/src/assets/top-bottom-flowers.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+header {
+  margin-bottom: 50px;
+}
+
+.boolean {
+  font-size: x-small;
+  font-weight: bolder;
+}
+
+.col-sm-3 th {
+  font-size: x-small;
+  font-weight: bolder;
+}
+
+.skinny-col {
+  column-width: 90px;
+}
+
+.skinny-col th {
+  font-size: xx-small;
+  background-color: #b0d2e2;
 }
