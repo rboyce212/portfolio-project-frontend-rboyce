@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 const API = import.meta.env.VITE_BASE_URL;
 
 export default function AddGuestForm() {
-  const [click, setClick] = useState(false);
   const navigate = useNavigate();
   const [guest, setGuest] = useState({
     last: "",
@@ -45,142 +44,32 @@ export default function AddGuestForm() {
     }
   };
 
-  //     function handleAddOneChange(e) {
-  //         setGuests({
-  //             ...guests,
-  //             [e.target.id]: e.target.value,
-  //         });
-  //     }
+  const handleTextChange = (e) => {
+    const { id, value } = e.target;
+    setGuest({ ...guest, [id]: value });
+  };
 
-  //   const handleTextChange = (e) => {
-  //     const { id, value } = e.target;
-  //     setGuest({ ...guest, [id]: value });
-  //   };
+  const handleAddConfirmChange = () => {
+    setGuest({ ...guest, addConfirm: !guest.addConfirm });
+  };
 
-  function handleLastChange(e) {
-    setGuest({
-      ...guest,
-      [e.target.id]: e.target.value,
-    });
-  }
+  const handleIsMailedChange = () => {
+    setGuest({ ...guest, isMailed: !guest.isMailed });
+  };
 
-  function handleFirstChange(e) {
-    setGuest({
-      ...guest,
-      [e.target.id]: e.target.value,
-    });
-  }
+  const handleRsvpChange = () => {
+    setGuest({ ...guest, rsvp: !guest.rsvp });
+  };
 
-  function handleAddOneChange(e) {
-    setGuest({
-      ...guest,
-      [e.target.id]: e.target.value,
-    });
-  }
+  const handleAttendingChange = () => {
+    setGuest({ ...guest, attending: !guest.attending });
+  };
 
-  function handleAddTwoChange(e) {
-    setGuest({
-      ...guest,
-      [e.target.id]: e.target.value,
-    });
-  }
-
-  function handleCityZipChange(e) {
-    setGuest({
-      ...guest,
-      [e.target.id]: e.target.value,
-    });
-  }
-
-  //   const handleAddConfirmChange = () => {
-  //     setGuest({ ...guest, addConfirm: !guest.addConfirm });
-  //   };
-
-  //   const handleIsMailedChange = () => {
-  //     setGuest({ ...guest, isMailed: !guest.isMailed });
-  //   };
-
-  //   const handleRsvpChange = () => {
-  //     setGuest({ ...guest, rsvp: !guest.rsvp });
-  //   };
-
-  //   const handleAttendingChange = () => {
-  //     setGuest({ ...guest, attending: !guest.attending });
-  //   };
-
-  function handleAddConfirmChange(e) {
-    if (click) {
-      setClick(true);
-      setGuest({
-        ...guest,
-        addConfirm: true,
-      });
-    } else {
-      setClick(false);
-      setGuest({
-        ...guest,
-        addconfirm: false,
-      });
-    }
-  }
-
-  function handleRsvpChange(e) {
-    if (click) {
-      setClick(true);
-      setGuest({
-        ...guest,
-        rsvp: true,
-      });
-    } else {
-      setClick(false);
-      setGuest({
-        ...guest,
-        rsvp: false,
-      });
-    }
-  }
-
-  function handleIsMailedChange(e) {
-    if (click) {
-      setClick(true);
-      setGuest({ ...guest, isMailed: true });
-    } else {
-      setClick(false);
-      setGuest({ ...guest, isMailed: false });
-    }
-  }
-
-  function handleAttendingChange(e) {
-    if (click) {
-      setClick(true);
-      setGuest({
-        ...guest,
-        attending: true,
-      });
-    } else {
-      setClick(false);
-      setGuest({
-        ...guest,
-        attending: false,
-      });
-    }
-  }
-
-  function handlePartyChange(e) {
-    setGuest({
-      ...guest,
-      [e.target.id]: e.target.value,
-    });
-  }
-  //   } = (e) => {
-  //     const { value } = e.target;
-  //     const partyValue = value === guest.party ? "" : value;
-  //     setGuest({ ...guest, party: partyValue });
-  //   };
-
-  //   const handleOnChange(id, value) {
-  //     setGuests({ ...guests, [id]: value });
-  //   }
+  const handlePartyChange = (e) => {
+    const { value } = e.target;
+    const partyValue = value === guest.party ? "" : value;
+    setGuest({ ...guest, party: partyValue });
+  };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -195,7 +84,7 @@ export default function AddGuestForm() {
           id="last"
           value={guest.last}
           type="text"
-          onChange={handleLastChange}
+          onChange={handleTextChange}
           placeholder="last name"
           required
         />
@@ -204,7 +93,7 @@ export default function AddGuestForm() {
           id="first"
           value={guest.first}
           type="text"
-          onChange={handleFirstChange}
+          onChange={handleTextChange}
           placeholder="first name"
           required
         />
@@ -213,7 +102,7 @@ export default function AddGuestForm() {
           id="addOne"
           value={guest.addOne}
           type="text"
-          onChange={handleAddOneChange}
+          onChange={handleTextChange}
           placeholder="street address"
           required
         />
@@ -222,7 +111,7 @@ export default function AddGuestForm() {
           id="addTwo"
           value={guest.addTwo}
           type="text"
-          onChange={handleAddTwoChange}
+          onChange={handleTextChange}
           placeholder="street continued"
         />
         <label htmlFor="cityZip">City, State Zipcode: </label>
@@ -230,7 +119,7 @@ export default function AddGuestForm() {
           id="cityZip"
           value={guest.cityZip}
           type="text"
-          onChange={handleCityZipChange}
+          onChange={handleTextChange}
           placeholder="city, ST zip"
           required
         />
@@ -238,7 +127,7 @@ export default function AddGuestForm() {
         <input
           id="addConfirm"
           type="checkbox"
-          onChange={(e) => handleAddConfirmChange}
+          onChange={handleAddConfirmChange}
           checked={guest.addConfirm}
         />
         <label htmlFor="isMailed">Invite is Mailed: </label>
@@ -274,11 +163,12 @@ export default function AddGuestForm() {
           placeholder="number in party"
         />
         <br />
+        <br />
         <button type="submit">Add New Guest</button>
       </form>
       <br />
       <Link to={`/guests`}>
-        <button>View All Guests</button>
+        <button>Back to All Guests</button>
       </Link>
     </div>
   );
